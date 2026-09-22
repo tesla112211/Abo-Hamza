@@ -70,6 +70,51 @@
       white-space: nowrap;
     }
 
+    /* ---------- promo strip (view only — takeaway) ---------- */
+    .promo {
+      position: relative;
+      background: linear-gradient(180deg, #1f1a10 0%, var(--soot) 100%);
+      border-bottom: 2px solid var(--ember);
+      padding: 0.9rem 0 1.05rem;
+    }
+    .promo::before {
+      content: ''; position: absolute; inset: 0 0 auto 0; height: 3px;
+      background: linear-gradient(90deg, transparent, var(--ember-hot), var(--flame), var(--ember-hot), transparent);
+    }
+    .promo-head {
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+      flex-wrap: wrap; text-align: center; margin-bottom: 0.7rem;
+    }
+    .promo-title {
+      font-family: var(--display); font-size: 1.15rem; color: var(--ember-hot);
+      letter-spacing: 0.01em; display: flex; align-items: center; gap: 0.4rem;
+    }
+    .promo-note {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      background: rgba(200,57,31,0.18); border: 1px solid var(--bad);
+      color: #ffb3a3; font-weight: 800; font-size: 0.74rem;
+      padding: 0.3rem 0.7rem; border-radius: 999px; white-space: nowrap;
+    }
+    .promo-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 0.55rem;
+    }
+    .promo-card {
+      display: flex; align-items: center; justify-content: space-between; gap: 0.6rem;
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: 10px; padding: 0.65rem 0.8rem;
+    }
+    .promo-name { font-size: 0.86rem; font-weight: 700; color: var(--cream); line-height: 1.35; }
+    .promo-price {
+      font-family: var(--num); font-weight: 800; font-size: 0.86rem;
+      color: #2b1704; background: linear-gradient(170deg, var(--ember-hot), var(--ember));
+      padding: 0.22rem 0.6rem; border-radius: 6px; white-space: nowrap; flex-shrink: 0;
+    }
+    .promo-foot {
+      margin-top: 0.75rem; text-align: center; font-size: 0.78rem;
+      color: var(--ash); font-weight: 700;
+    }
+
     /* ---------- top bar ---------- */
     .topbar {
       position: sticky; top: 0; z-index: 60;
@@ -355,6 +400,25 @@
 </head>
 <body>
 
+  <section class="promo" aria-label="أقوى عروض أبو حمزة">
+    <div class="container">
+      <div class="promo-head">
+        <div class="promo-title">🔥 أقوى وأحدث عروض أبو حمزة</div>
+        <span class="promo-note">⚠️ للتيك اواي فقط — مش متاحة للطلب من الموقع</span>
+      </div>
+      <div class="promo-grid">
+        <div class="promo-card"><span class="promo-name">٣ شاورما فراخ سوري</span><span class="promo-price">٩٠ ج</span></div>
+        <div class="promo-card"><span class="promo-name">٣ بطاطس سوري</span><span class="promo-price">٥٠ ج</span></div>
+        <div class="promo-card"><span class="promo-name">كريب شاورما فراخ</span><span class="promo-price">٤٥ ج</span></div>
+        <div class="promo-card"><span class="promo-name">كريب سجق</span><span class="promo-price">٣٠ ج</span></div>
+        <div class="promo-card"><span class="promo-name">كريب كفتة</span><span class="promo-price">٣٠ ج</span></div>
+        <div class="promo-card"><span class="promo-name">كريب بطاطس</span><span class="promo-price">٢٠ ج</span></div>
+        <div class="promo-card"><span class="promo-name">أي ٢ حواوشي والتالت مجاناً</span><span class="promo-price">هدية</span></div>
+      </div>
+      <div class="promo-foot">العروض دي متاحة استلام من الفرع فقط — للطلب اتصل بينا مباشرة على الأرقام تحت.</div>
+    </div>
+  </section>
+
   <div class="topbar" id="topbar">
     <div class="container bar-row">
       <div class="brand">
@@ -452,27 +516,28 @@
 const WHATSAPP_NUMBER = '201094970030';
     const RESTAURANT_NAME = 'مشويات أبو حمزة';
       const CATEGORIES = [
+
           {
-              id: 'meats', name: 'عروض أبو حمزة الحصرية 🤯✅',
+              id: 'family_offers', name: 'فيضان صواني أبو حمزة الجديدة',
               items: [
-                  { id: 'عرض كريب الشيش طاووق', name: 'عرض كريب الشيش طاووق', desc: 'كريب الشيش طاووق الجديد بتتبيلة مش هتدوق زيها لفترة محدودة 70 جنية', price: 70 },
+                  { id: 'صينية الفيضان', name: 'صينية الفيضان', desc: 'فرخة شواية + ربع كفتة + ربع طرب + ربع سجق على ممبار + رز بسمتي + عيش + سلطات', price: 400 },
+                  { id: 'صينية البطل', name: 'صينية البطل', desc: 'فرخة شواية + ربع كفتة + ربع طرب + ربع مشكل + رز بسمتي + عيش + سلطات', price: 400 },
+                  { id: 'صينية العيلة الكبيرة', name: 'صينية العيلة الكبيرة', desc: 'فرخة شواية + نص كفتة + نص طرب + ربع مشكل + رز بسمتي + عيش + سلطات', price: 550 },
+                  { id: 'صينية العتاولة', name: 'صينية العتاولة', desc: 'فرخة شيش + ربع كفتة + ربع طرب + ربع مشكل + رز بسمتي + عيش + سلطات', price: 500 },
+                  { id: 'صينية الصدارة', name: 'صينية الصدارة', desc: 'فرخة شيش + نص كفتة + نص طرب + رز بسمتي + عيش + سلطات', price: 580 },
+                  { id: 'صينية أبو حمزة', name: 'صينية أبو حمزة', desc: 'فرخة شيش + نص كفتة + نص طرب + ربع ممبار + ربع سجق + رز بسمتي + عيش + سلطات', price: 680 },
+                  { id: 'صينية من الأخر', name: 'صينية من الأخر', desc: 'نص فرخة شواية + ربع كفتة + ربع طرب + ربع ممبار + ربع سجق + رز بسمتي + عيش + سلطات', price: 400 },
+                  { id: 'صينية العزوة', name: 'صينية العزوة', desc: 'نص فرخة شواية + ربع كفتة + ربع طرب + فرد حمام + رز بسمتي + عيش + سلطات', price: 400 },
+                  { id: 'صينية خلصانة', name: 'صينية خلصانة', desc: 'نص فرخة شواية + نص كفتة + نص طرب + 2 حواوشي + رز بسمتي + عيش + سلطات', price: 400 },
+                  { id: 'صينية العمدة', name: 'صينية العمدة', desc: 'فرخة شواية + كيلو كفتة + محاشي مشكلة + رز بسمتي + عيش + سلطات', price: 450 },
+                  { id: 'صينية ملوك الكار', name: 'صينية ملوك الكار', desc: 'فرخة شيش + كيلو كفتة + رز بسمتي + عيش + سلطات', price: 520 },
+                  { id: 'صينية العز', name: 'صينية العز', desc: 'فرخة شواية + كيلو طرب + رز بسمتي + عيش + سلطات', price: 550 },
+                  { id: 'صينية الضربة القاضية', name: 'صينية الضربة القاضية', desc: 'نص فرخة شيش + نص كفتة + نص طرب + طاجن من إختيارك + رز بسمتي + عيش + سلطات', price: 590 },
+                  { id: 'صينية الحرش', name: 'صينية الحرش', desc: 'نص كبدة + نص سجق محمر + نص ممبار + نص كفتة كبيبة + عيش + سلطات', price: 500 },
               ]
           },
-      {
-        id: 'meats', name: 'صواني أبو حمزة 🤩💯',
-        items: [
-            { id: 'شم النسيم 1', name: 'صينية شم النسيم 1', desc: 'فرخة شواية كاملة + ربع كفتة + ربع طرب + نص مشكل محمرات + رز بسمتي + عيش + سلطات', price: 450 },
-            { id: 'صينية شم النسيم 2', name: 'صينية شم النسيم 2', desc: 'فرخة شواية كاملة + نص  كفتة + نص طرب + فرد حمام + نص مشكل محمرات + رز بسمتي + عيش + سلطات', price: 650 },
-            { id: 'صينية الفرعون فراخ', name: 'صينية الفرعون فراخ', desc: 'نص فرخة شواية + 2 قطعة بروست + 2 سيخ شيش طاووق + 3 قطع ستريبس + رز بسمتي + عيش + سلطات', price: 300 },
-            { id: 'صينية الفرعون لحمة', name: 'صينية الفرعون لحمة', desc: 'نص كفتة + نص طرب + 2 حواوشي + رز بسمتي + عيش + سلطات', price: 300 },
-            { id: 'صينية بيس', name: 'صينية بيس', desc: 'نص فرخة شواية + ربع كغتة + ربع طرب + ربع ممبار وسجق + رز بسمتي + عيش + سلطات', price: 270 },
-            { id: 'صينية فيفا', name: 'صينية فيفا', desc: ' 3 قطع بروست + فتة شاروما فراخ + سوري من إختيارك (إكتب إختيارك في الملاحظات) + رز بسمتي + عيش + سلطات', price: 300 },
-            { id: 'صينية الملوك', name: 'صينية الملوك', desc: 'فرخة شواية كاملة + ربع كفتة + ربع سجق محمر + ربع ممبار محمر + رز بسمتي + عيش + سلطات', price: 380 },
-            { id: 'صينية دكتور ربيع', name: 'صينية دكتور ربيع', desc: 'فرخة شواية كاملة + كيلو كفتة + رز بسمتي + عيش + سلطات', price: 450 },
-            { id: 'صينية حزلقوووم', name: 'صينية حزلقوووم', desc: 'فرخة شواية كاملة + 2 شاورما فراخ سوري + بطاطس + عيش + سلطات', price: 450 },
-            { id: 'صينية التنين', name: 'صينية التنين', desc: 'نص فرخة شيش + نص كفتة + نص طرب + ربع سجق مشوي + ربع ممبار + رز بسمتي + عيش + سلطات', price: 550 },
-        ]
-          },
+
+
           {
               id: 'family_offers', name: 'العروض العائلية للتوفير',
               items: [
@@ -486,19 +551,7 @@ const WHATSAPP_NUMBER = '201094970030';
                   { id: 'عرض كيلو كفتة جوز حمام', name: 'كيلو كفتة + جوز حمام', desc: 'كيلو كفتة + جوز حمام + عيش + سلطات', price: 520 },
               ]
           },
-          {
-              id: 'offers', name: 'وجبات أبو حمزة 😉',
-              items: [
-                  { id: 'وجبة التنين', name: 'وجبة التنين', desc: 'ربع فرخة شيش + تمن سجق مشوي + تمن ممبار + رز بسمتي + عيش + سلطات', price: 100 },
-                  { id: 'الوجبة الفردي 2', name: 'الوجبة الفردي 2', desc: 'ربع فرخة شواية + تمن سجق محمر + تمن ممبار محمر + رز بسمتي + عيش + سلطات', price: 130 },
-                  { id: 'الوجبة الفردي 3', name: 'الوجبة الفردي 3', desc: 'ربع فرخة شواية + ربع كفتة + رز بسمتي + عيش + سلطات', price: 130 },
-                  { id: 'وجبة عمر مرموش', name: 'وجبة عمر مرموش', desc: 'ربع فرخة شواية + تمن كفتة + تمن ممبار محمر + تمن سجق محمر + عيش + سلطات', price: 140 },
-                  { id: 'وجبة محمد صلاح', name: 'وجبة محمد صلاح', desc: 'ربع فرخة شواية + تمن طرب + تمن ممبار محمر + تمن سجق محمر + عيش + سلطات', price: 150 },
-                  { id: 'وجبة الزوجة الثانية', name: 'وجبة الزوجة الثانية', desc: 'نص فرخة شواية + تمن كفتة + بطاطس + رز بسمتي + عيش + سلطات', price: 130 },
-                  { id: 'وجبة الزوجة الثالثة', name: 'وجبة الزوجة الثالثة', desc: 'نص فرخة شواية + تمن طرب + بطاطس + رز بسمتي + عيش + سلطات', price: 130 },
-                  { id: 'وجبة الزوجة الرابعة', name: 'وجبة الزوجة الرابعة', desc: 'تمن كفتة + تمن طرب + تمن ممبار على سجق + رز بسمتي + عيش + سلطات', price: 130 },
-              ]
-          },
+
           {
               id: 'mix_offers', name: 'وجبات الميكس والتوفير',
               items: [
@@ -646,16 +699,16 @@ const WHATSAPP_NUMBER = '201094970030';
       {
         id: 'shawarma', name: 'ركن الشاورما',
         items: [
-          { id: 'كايزر لحمة', name: 'كايزر شاورما لحمة', desc: 'ساندوتش كايزر شاورما لحمة', price: 40 },
+          { id: 'كايزر لحمة', name: 'كايزر شاورما لحمة', desc: 'ساندوتش كايزر شاورما لحمة', price: 45 },
           { id: 'كايزر فراخ', name: 'كايزر شاورما فراخ', desc: 'ساندوتش كايزر شاورما فراخ', price: 40 },
-          { id: 'سوري وسط لحمة', name: 'سوري وسط شاورما لحمة', desc: 'سوري وسط شاورما لحمة', price: 70 },
+          { id: 'سوري وسط لحمة', name: 'سوري وسط شاورما لحمة', desc: 'سوري وسط شاورما لحمة', price: 75 },
           { id: 'سوري وسط فراخ', name: 'سوري وسط شاورما فراخ', desc: 'سوري وسط شاورما فراخ', price: 70 },
-          { id: 'سوري كبير لحمة', name: 'سوري كبير شاورما لحمة', desc: 'سوري كبير شاورما لحمة', price: 85 },
-          { id: 'سوري كبير فراخ', name: 'سوري كبير شاورما فراخ', desc: 'سوري كبير شاورما فراخ', price: 90 },
-          { id: 'وجبة عربي لحمة', name: 'وجبة عربي شاورما لحمة', desc: 'وجبة عربي شاورما لحمة', price: 120 },
+          { id: 'سوري كبير لحمة', name: 'سوري كبير شاورما لحمة', desc: 'سوري كبير شاورما لحمة', price: 90 },
+          { id: 'سوري كبير فراخ', name: 'سوري كبير شاورما فراخ', desc: 'سوري كبير شاورما فراخ', price: 85 },
+          { id: 'وجبة عربي لحمة', name: 'وجبة عربي شاورما لحمة', desc: 'وجبة عربي شاورما لحمة', price: 130 },
           { id: 'وجبة عربي فراخ', name: 'وجبة عربي شاورما فراخ', desc: 'وجبة عربي شاورما فراخ', price: 120 },
-          { id: 'فتة شاورما لحمة', name: 'فتة شاورما لحمة', desc: 'فتة شاورما لحمة', price: 65 },
-          { id: 'فتة شاورما فراخ', name: 'فتة شاورما فراخ', desc: 'فتة شاورما فراخ', price: 70 },
+          { id: 'فتة شاورما لحمة', name: 'فتة شاورما لحمة', desc: 'فتة شاورما لحمة', price: 70 },
+          { id: 'فتة شاورما فراخ', name: 'فتة شاورما فراخ', desc: 'فتة شاورما فراخ', price: 65 },
         ]
       },
       {
